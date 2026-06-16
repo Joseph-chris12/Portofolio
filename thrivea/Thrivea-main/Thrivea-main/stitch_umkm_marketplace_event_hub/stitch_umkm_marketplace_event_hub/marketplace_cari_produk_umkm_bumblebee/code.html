@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UMKM Marketplace | Katalog Produk Nusantara</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#e9c400",
+                    "surface-container-lowest": "#0c0f0f",
+                    "primary-fixed": "#ffe16d",
+                    "on-error": "#690005",
+                    "on-primary-fixed": "#221b00",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "primary-fixed-dim": "#e9c400",
+                    "on-background": "#e2e2e2",
+                    "on-tertiary-container": "#605f5e",
+                    "tertiary-container": "#dcd9d9",
+                    "on-secondary-fixed-variant": "#474747",
+                    "tertiary-fixed": "#e5e2e1",
+                    "on-surface-variant": "#d0c6ab",
+                    "surface-container-highest": "#333535",
+                    "outline-variant": "#4d4732",
+                    "secondary": "#c6c6c6",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "on-primary-container": "#705e00",
+                    "on-primary-fixed-variant": "#544600",
+                    "on-error-container": "#ffdad6",
+                    "surface-tint": "#e9c400",
+                    "surface-container": "#1e2020",
+                    "on-secondary-container": "#b5b5b5",
+                    "surface-container-low": "#1a1c1c",
+                    "surface": "#121414",
+                    "surface-container-high": "#282a2b",
+                    "background": "#121414",
+                    "on-tertiary": "#313030",
+                    "on-surface": "#e2e2e2",
+                    "inverse-primary": "#705d00",
+                    "inverse-surface": "#e2e2e2",
+                    "secondary-container": "#474747",
+                    "primary-container": "#ffd700",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "on-primary": "#3a3000",
+                    "inverse-on-surface": "#2f3131",
+                    "surface-dim": "#121414",
+                    "tertiary": "#f9f5f5",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-secondary": "#303030",
+                    "outline": "#999077",
+                    "surface-variant": "#333535",
+                    "error-container": "#93000a",
+                    "surface-bright": "#38393a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "sm": "8px",
+                    "gutter": "20px",
+                    "margin-desktop": "64px",
+                    "base": "4px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "xl": "40px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-bold": ["Plus Jakarta Sans"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #121414; /* surface-dim */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .product-card-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        .product-card-shadow:hover {
+            box-shadow: 0 10px 30px rgba(233, 196, 0, 0.15);
+            border-color: #e9c400;
+        }
+        input[type="checkbox"] {
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 max-w-container-max mx-auto bg-surface-container-high border-b border-outline-variant">
+<div class="flex items-center gap-xl">
+<span class="font-headline-md text-headline-md font-bold text-primary">UMKM Marketplace</span>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-bold text-sm transition-colors" href="#">Marketplace</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-bold text-sm" href="#">Events</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-bold text-sm" href="#">Kategori</a>
+</nav>
+</div>
+<!-- Search Bar -->
+<div class="hidden lg:flex items-center flex-1 max-w-md mx-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-none text-sm focus:outline-none focus:border-primary transition-all text-on-surface placeholder:text-outline" placeholder="Cari produk UMKM favoritmu..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">shopping_cart</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0CYK5YzX5J1XLazR1et2YCs6ODzVDGuK8ardRa63FSv8qdzCAkfzCy4wmTgpnuyDQ_nHW3ugy2kX0kS8GeNBQy6KjoUhUHOSj5vwuVqNgbT6u0LhOPkb1F5K-KIrEjY8LaKUHRnT72Sw5GvUbnB-IDxorFHhG9tlPw5S-qIAN7jliB3Uxq2i9GLmLVMX5veuVCq4M7GGeJMjsutqVUELYINRKPbSrv4egWD95WRbpojnWI8IrNJ6lyd5XsGP9mcVU0VxGkh1btw"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row gap-gutter">
+<!-- Sidebar Filters -->
+<aside class="hidden md:block w-64 flex-shrink-0">
+<div class="sticky top-24 space-y-lg">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-md border-l-4 border-primary pl-3">Filter</h3>
+<!-- Categories -->
+<div class="mb-lg mt-lg">
+<span class="font-label-bold text-[11px] text-primary uppercase tracking-widest block mb-md">Kategori</span>
+<div class="space-y-sm">
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="bg-surface-container-highest border-outline-variant text-primary focus:ring-primary focus:ring-offset-surface" type="checkbox"/>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-primary">Kerajinan Tangan</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input checked="" class="bg-surface-container-highest border-outline-variant text-primary focus:ring-primary focus:ring-offset-surface" type="checkbox"/>
+<span class="text-sm font-bold text-primary">Makanan &amp; Minuman</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="bg-surface-container-highest border-outline-variant text-primary focus:ring-primary focus:ring-offset-surface" type="checkbox"/>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-primary">Fashion Lokal</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="bg-surface-container-highest border-outline-variant text-primary focus:ring-primary focus:ring-offset-surface" type="checkbox"/>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-primary">Perabotan</span>
+</label>
+</div>
+</div>
+<!-- Price Range -->
+<div class="mb-lg">
+<span class="font-label-bold text-[11px] text-primary uppercase tracking-widest block mb-md">Harga</span>
+<div class="space-y-base px-1">
+<input class="w-full accent-primary h-1 bg-surface-container-highest rounded-full appearance-none" type="range"/>
+<div class="flex justify-between text-[11px] font-bold text-on-surface-variant uppercase mt-2">
+<span>Rp 0</span>
+<span>Rp 1jt+</span>
+</div>
+</div>
+</div>
+<!-- Location -->
+<div class="mb-lg">
+<span class="font-label-bold text-[11px] text-primary uppercase tracking-widest block mb-md">Lokasi</span>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-none py-2 px-3 text-sm text-on-surface focus:border-primary focus:ring-0">
+<option>Semua Kota</option>
+<option>Jakarta</option>
+<option>Bandung</option>
+<option>Yogyakarta</option>
+<option>Bali</option>
+</select>
+</div>
+</div>
+<!-- UMKM Support Banner -->
+<div class="bg-primary p-md rounded-none text-on-primary">
+<span class="material-symbols-outlined mb-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+<p class="font-label-bold text-sm mb-xs uppercase tracking-tight">Dukung UMKM Lokal</p>
+<p class="text-xs font-medium leading-relaxed">Setiap pembelian membantu ekonomi daerah secara langsung.</p>
+</div>
+</div>
+</aside>
+<!-- Product Grid -->
+<section class="flex-1">
+<div class="flex justify-between items-end mb-lg">
+<h2 class="font-headline-md text-headline-md border-b-4 border-primary pb-1">Produk Terpopuler</h2>
+<div class="flex items-center gap-base">
+<span class="font-label-bold text-[11px] text-on-surface-variant uppercase">Urutkan:</span>
+<select class="bg-transparent border-none font-label-bold text-sm text-primary focus:ring-0 cursor-pointer">
+<option>Terbaru</option>
+<option>Harga Terendah</option>
+<option>Rating Tertinggi</option>
+</select>
+</div>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+<!-- Product Card 1 -->
+<div class="bg-surface-container-low rounded-none overflow-hidden product-card-shadow border border-outline-variant transition-all duration-300 flex flex-col group">
+<div class="relative aspect-square overflow-hidden bg-surface-container-highest">
+<img alt="Sambal Tradisional" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe1N3RvUuly9XlHus1Q9irasWd06VGx6X78eDSQmBfZ3kfF5ht633myAgQMo-8SHziP6uUkeXYvyRSEj6V4CxQz9pCZnqB1FmpiZx8YI2x2TxV1BnPH3pMzwqtoekl8B6m8M4Y00WHbUKLwZ5qgNbeNmRlRX7qpgPEFUUtCrWaUuC7NRtqe7uQFhQvCXujuYJaAriaEElrNdUa5MSmIDqW2riqxEzVPaezeDkKajmmWZiNXUOGKyhwDmJ1NM-YLZ_9if00Yv62-A"/>
+<div class="absolute top-0 left-0 bg-primary text-on-primary px-2 py-1 font-label-bold text-[10px] uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                            UMKM Asli
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<span class="font-label-bold text-[10px] text-primary uppercase mb-xs">Makanan</span>
+<h4 class="font-bold text-sm text-on-surface line-clamp-2 mb-md leading-snug">Sambal Bajak Tradisional - Resep Warisan Karuhun</h4>
+<div class="mt-auto">
+<p class="font-headline-sm text-primary mb-xs">Rp 35.000</p>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="text-xs font-medium">Bandung</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-surface-container-low rounded-none overflow-hidden product-card-shadow border border-outline-variant transition-all duration-300 flex flex-col group">
+<div class="relative aspect-square overflow-hidden bg-surface-container-highest">
+<img alt="Tas Rotan Bali" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDae3rlFNKp_iBDP3vVY3SuEWMtc4yMAUFkzaAAYOsImVyFAJ_8sHH6Q-NBHaSWbMcwZanV76Z2SJZaXDWdlzEi5V-sXbNax2Hze9Q7s5duaEaijXqO2S6Amp5YXxwEkfdlwwnbS-MWqA5OqjmkXB0VltQllesn_LHcAqSDK2UIJ2TSQ5pyaMpwmfJwhn3QcjKSQFUh0GBa129e-DCeGTbaHsGPMM_bfqO_9g2UEunHMOwJ5PWOpqxLMqHlssbps23ArvOsHnjxqg"/>
+</div>
+<div class="p-md flex flex-col flex-1">
+<span class="font-label-bold text-[10px] text-primary uppercase mb-xs">Kerajinan</span>
+<h4 class="font-bold text-sm text-on-surface line-clamp-2 mb-md leading-snug">Tas Rotan Bulat - Handmade Artisan Bali</h4>
+<div class="mt-auto">
+<p class="font-headline-sm text-primary mb-xs">Rp 125.000</p>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="text-xs font-medium">Denpasar</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-surface-container-low rounded-none overflow-hidden product-card-shadow border border-outline-variant transition-all duration-300 flex flex-col group">
+<div class="relative aspect-square overflow-hidden bg-surface-container-highest">
+<img alt="Kopi Gayo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIzoed2gbc80vDAPf1dxKMjmF-m_oOZXiolkE8ZQGzjzySytKcBI2I1B0nqmQITNbSBuABNyPHp9VpobQClF4F7BwWfi3VfXVKXJOuhYDRdKEG4AQZ3D3T7WYmKk9l30SiTvc-qAebUeUTs-pHsZYndJp7nfO8FDD9j73TFAX7IE0085jQJbyCGv0RIaGHDA-l-tzcRjAXi6NZTXISecQZGyAy5yMwT-Z6cNTWbl8eGVLB9Rl7YgNGiNkOmGfkZHq2GKABRx2XSg"/>
+</div>
+<div class="p-md flex flex-col flex-1">
+<span class="font-label-bold text-[10px] text-primary uppercase mb-xs">Minuman</span>
+<h4 class="font-bold text-sm text-on-surface line-clamp-2 mb-md leading-snug">Kopi Gayo Arabica - Specialty Roast 250g</h4>
+<div class="mt-auto">
+<p class="font-headline-sm text-primary mb-xs">Rp 89.000</p>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="text-xs font-medium">Aceh Tengah</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-surface-container-low rounded-none overflow-hidden product-card-shadow border border-outline-variant transition-all duration-300 flex flex-col group">
+<div class="relative aspect-square overflow-hidden bg-surface-container-highest">
+<img alt="Batik Tulis" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2n6MnEN0CXwX3RSLHtqAMe8lJNtXKHs83gKpHsVIxicqR-n-mAQ4VANhycpA0qHBI-QcR5dVdxdS6afmHft8NZQDMcXZqSSF5n_5xtSdcHQMMaTcRtA-FHeHLy6gmrqxfJFOkwbn6MR5mnqnUvS5qMHDldXFnabRln9_AyAhWWpQQqA8QSzmcLSiOHe7v5QCZsD2IVmmeVX1IJnnPynKZTSryChkViTGTF-DPSZ7vtor1UmjK4_snSc5gtwlqj-3Ae9gnI_GUvQ"/>
+<div class="absolute top-0 left-0 bg-primary text-on-primary px-2 py-1 font-label-bold text-[10px] uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                            UMKM Asli
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<span class="font-label-bold text-[10px] text-primary uppercase mb-xs">Fashion</span>
+<h4 class="font-bold text-sm text-on-surface line-clamp-2 mb-md leading-snug">Kain Batik Tulis Solo - Motif Parang Kencana</h4>
+<div class="mt-auto">
+<p class="font-headline-sm text-primary mb-xs">Rp 450.000</p>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span class="text-xs font-medium">Surakarta</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-xl flex justify-center items-center gap-base">
+<button class="w-10 h-10 flex items-center justify-center rounded-none border border-outline-variant text-on-surface hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-none bg-primary text-on-primary font-bold text-sm">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-none border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors font-bold text-sm">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-none border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors font-bold text-sm">3</button>
+<span class="text-on-surface-variant px-2">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-none border border-outline-variant text-on-surface hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-surface-container-low border-t border-primary">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-bold text-[10px] uppercase">Beranda</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+<span class="font-label-bold text-[10px] uppercase">Pasar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="font-label-bold text-[10px] uppercase">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-bold text-[10px] uppercase">Profil</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="w-full py-xl px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-t border-outline-variant">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1 md:col-span-1">
+<span class="font-headline-sm text-primary font-bold mb-md block uppercase tracking-tighter">UMKM Marketplace</span>
+<p class="text-sm font-medium text-on-surface-variant leading-relaxed">Mendukung karya anak bangsa dengan menghubungkan produsen lokal langsung ke tangan konsumen global.</p>
+</div>
+<div>
+<h4 class="font-label-bold text-[11px] text-primary uppercase tracking-widest mb-md">Perusahaan</h4>
+<ul class="space-y-sm">
+<li><a class="text-sm font-medium text-on-surface-variant hover:text-primary transition-all" href="#">Tentang Kami</a></li>
+<li><a class="text-sm font-medium text-on-surface-variant hover:text-primary transition-all" href="#">Jadi Seller UMKM</a></li>
+<li><a class="text-sm font-medium text-on-surface-variant hover:text-primary transition-all" href="#">Hubungi Kami</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-bold text-[11px] text-primary uppercase tracking-widest mb-md">Bantuan</h4>
+<ul class="space-y-sm">
+<li><a class="text-sm font-medium text-on-surface-variant hover:text-primary transition-all" href="#">Pusat Bantuan</a></li>
+<li><a class="text-sm font-medium text-on-surface-variant hover:text-primary transition-all" href="#">Syarat &amp; Ketentuan</a></li>
+<li><a class="text-sm font-medium text-on-surface-variant hover:text-primary transition-all" href="#">Kebijakan Privasi</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-bold text-[11px] text-primary uppercase tracking-widest mb-md">Pembayaran</h4>
+<div class="flex flex-wrap gap-sm">
+<div class="w-12 h-8 bg-surface-container-high border border-outline-variant"></div>
+<div class="w-12 h-8 bg-surface-container-high border border-outline-variant"></div>
+<div class="w-12 h-8 bg-surface-container-high border border-outline-variant"></div>
+<div class="w-12 h-8 bg-surface-container-high border border-outline-variant"></div>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto mt-xl pt-lg border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="text-[11px] font-bold text-outline uppercase tracking-widest">© 2024 UMKM Asli. Gotong Royong Membangun Negeri.</p>
+<div class="flex gap-lg">
+<a class="text-on-surface-variant hover:text-primary" href="#"><span class="material-symbols-outlined">facebook</span></a>
+<a class="text-on-surface-variant hover:text-primary" href="#"><span class="material-symbols-outlined">share</span></a>
+</div>
+</div>
+</footer>
+<script>
+    // Micro-interaction for product card hover/effects
+    document.querySelectorAll('.group').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-4px)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+    });
+</script>
+</body></html>

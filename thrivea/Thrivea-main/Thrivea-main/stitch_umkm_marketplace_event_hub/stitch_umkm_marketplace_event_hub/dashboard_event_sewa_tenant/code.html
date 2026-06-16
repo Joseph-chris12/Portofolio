@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UMKM Marketplace - Tenant Event Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fcf9f8;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 128, 128, 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #bdc9c8;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed": "#1c1c18",
+                      "surface-container-low": "#f6f3f2",
+                      "on-tertiary-container": "#fcf8f2",
+                      "on-secondary-fixed": "#351000",
+                      "outline": "#6e7979",
+                      "on-primary-fixed": "#002020",
+                      "error-container": "#ffdad6",
+                      "surface-container": "#f0eded",
+                      "surface-container-highest": "#e4e2e1",
+                      "on-background": "#1b1c1c",
+                      "on-surface": "#1b1c1c",
+                      "inverse-on-surface": "#f3f0f0",
+                      "tertiary-container": "#74726d",
+                      "outline-variant": "#bdc9c8",
+                      "tertiary-fixed": "#e6e2dc",
+                      "surface": "#fcf9f8",
+                      "surface-bright": "#fcf9f8",
+                      "primary-container": "#008080",
+                      "secondary-fixed": "#ffdbcc",
+                      "surface-container-high": "#eae7e7",
+                      "on-secondary-fixed-variant": "#7c2e00",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#dcd9d9",
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#76d6d5",
+                      "error": "#ba1a1a",
+                      "secondary-container": "#fe8d56",
+                      "on-surface-variant": "#3e4949",
+                      "on-secondary-container": "#702900",
+                      "surface-tint": "#006a6a",
+                      "surface-variant": "#e4e2e1",
+                      "primary": "#006565",
+                      "primary-fixed": "#93f2f2",
+                      "on-primary-container": "#e3fffe",
+                      "inverse-surface": "#303030",
+                      "tertiary": "#5b5a55",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#484743",
+                      "on-error-container": "#93000a",
+                      "background": "#fcf9f8",
+                      "secondary-fixed-dim": "#ffb595",
+                      "tertiary-fixed-dim": "#c9c6c1",
+                      "secondary": "#9d4311",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed-variant": "#004f4f",
+                      "primary-fixed-dim": "#76d6d5"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "xs": "4px",
+                      "base": "8px",
+                      "xl": "32px",
+                      "margin-desktop": "32px",
+                      "md": "16px",
+                      "gutter": "16px",
+                      "lg": "24px",
+                      "sm": "12px",
+                      "container-max": "1200px"
+              },
+              "fontFamily": {
+                      "label-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "headline-xl": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "body-sm": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface dark:bg-surface-container-highest border-b border-outline-variant dark:border-outline flex justify-between items-center px-margin-desktop h-16 max-w-container-max mx-auto">
+<div class="flex items-center gap-xl">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">UMKM Marketplace</span>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Marketplace</a>
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1" href="#">Events</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Kategori</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="shopping_cart">shopping_cart</button>
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</button>
+<div class="h-8 w-8 rounded-full bg-secondary-fixed overflow-hidden border border-outline-variant">
+<img alt="User avatar" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3Q68X6x2C1T32NOnx8nXWZJqIgmuNqlAbybq3VTOdtasOO9ODRpwJu0vu4rjxDs69GQxsJOEom0KdF40bObELt_5mdXe7ZpJ13jxgHYjElSJ7f4jdCi_WzL60kPU4fmNhVCLCs3GHDlkLuRwMzR-vSfnGDisdk_RkddpoW-4dlqNTh9bIAdpP-0JmIiul27NrHB_Qz_tiCDaHGe56C4q5a4wo0jv_NXojHHu-8n5INS4jkB0eGctnUPgKnjOyW-CytzgKceQYZA"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-20 px-4 md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Hero / Stats Header -->
+<section class="mb-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg">
+<div>
+<h1 class="font-headline-lg text-headline-lg md:text-headline-xl text-primary mb-2">Portal Event & Tenant</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Kelola pendaftaran event Anda dan temukan peluang bazar terbaik untuk meningkatkan omzet UMKM Anda.</p>
+</div>
+<div class="flex gap-sm">
+<span class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-xl font-label-md text-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+                        UMKM Asli Badge
+                    </span>
+</div>
+</div>
+<!-- Dashboard Brief Stats -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant/30 shadow-sm">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Event Mendatang</p>
+<p class="font-headline-md text-headline-md text-primary">12 Terdaftar</p>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant/30 shadow-sm">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Total Omzet Bazar</p>
+<p class="font-headline-md text-headline-md text-secondary">Rp 12.4M</p>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant/30 shadow-sm">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Slot Tersedia</p>
+<p class="font-headline-md text-headline-md text-on-surface">45 Slot</p>
+</div>
+<div class="bg-primary p-md rounded-xl border border-primary-container shadow-md text-on-primary">
+<p class="font-label-sm text-label-sm opacity-80 mb-1 uppercase tracking-wider">Status Akun</p>
+<p class="font-headline-md text-headline-md">Seller Terverifikasi</p>
+</div>
+</div>
+</section>
+<!-- Main Content: Event List -->
+<section class="mb-xl">
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Event Mendatang</h2>
+<div class="flex gap-xs">
+<button class="bg-surface-container-high p-2 rounded-lg text-on-surface-variant hover:bg-outline-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+<button class="bg-surface-container-high p-2 rounded-lg text-on-surface-variant hover:bg-outline-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="sort">sort</span>
+</button>
+</div>
+</div>
+<!-- Bento-style Event Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-gutter">
+<!-- Main Featured Event -->
+<div class="xl:col-span-2 group relative overflow-hidden rounded-xl border border-outline-variant/50 bg-surface-container-lowest shadow-sm hover:shadow-lg transition-all duration-300">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A vibrant and bustling outdoor food festival in Jakarta featuring rows of modern MSME food stalls with colorful banners and professional signage. The scene is bathed in warm afternoon sunlight, creating an inviting and energetic marketplace atmosphere with diverse people exploring local Indonesian culinary delights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE4lmIihXgYGMjUeqwDBi6omsEhLqMScgUsPoGtdKEBPNITAxIJvcu51RlObHS-siuJxcMyS8eCo_okHV-2K1KHjKXP4AULX1f0u9uNL3cAoaX8oIavO30rZbCPn-2bKIDqtWitM3WKL_O-jXpFv0qUZY0YgZAwceoDu-hKkWpV50_EbTLTyyRbAtH8JqOed0SINAYhxO9e2L-ntlB5OEh0oNOqDR3aop8ltst-CBatyyr-3RxLpkBAaVJTbTCkbb3DqeyD6aFkw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<span class="bg-primary px-3 py-1 rounded-full font-label-sm text-label-sm mb-2 inline-block">HOT EVENT</span>
+<h3 class="font-headline-md text-headline-md">Jakarta Food Fair 2024</h3>
+<p class="font-body-sm text-body-sm opacity-90"><span class="material-symbols-outlined align-middle text-[16px] mr-1" data-icon="location_on">location_on</span>Gelora Bung Karno, Jakarta Pusat</p>
+</div>
+</div>
+<div class="p-lg grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-4">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-1 uppercase">Harga Booking Tenant</h4>
+<p class="font-headline-md text-headline-md text-secondary">Rp 2.500.000 <span class="text-body-sm font-normal text-on-surface-variant">/ 3 Hari</span></p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-1 uppercase">Kriteria UMKM</h4>
+<div class="flex flex-wrap gap-2">
+<span class="bg-primary-container/10 text-primary px-3 py-1 rounded-full font-label-sm text-label-sm border border-primary/20">Kuliner Nusantara</span>
+<span class="bg-primary-container/10 text-primary px-3 py-1 rounded-full font-label-sm text-label-sm border border-primary/20">Minuman Kreatif</span>
+<span class="bg-primary-container/10 text-primary px-3 py-1 rounded-full font-label-sm text-label-sm border border-primary/20">Makanan Ringan</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-1 uppercase">Ketentuan</h4>
+<ul class="font-body-sm text-body-sm text-on-surface space-y-1">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span> Memiliki NIB aktif</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span> Booth uk. 2x2m (disediakan)</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span> Listrik 450 Watt per tenant</li>
+</ul>
+</div>
+<button class="w-full bg-secondary text-on-secondary py-3 rounded-xl font-headline-md text-headline-md hover:bg-on-secondary-fixed-variant transition-colors shadow-md" onclick="openForm('Jakarta Food Fair 2024')">Daftar Sekarang</button>
+</div>
+</div>
+</div>
+<!-- Secondary Event Item -->
+<div class="flex flex-col rounded-xl border border-outline-variant/50 bg-surface-container-lowest shadow-sm overflow-hidden">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean and professional setup of an indoor craft exhibition in a modern convention center. High-quality Indonesian handmade batik and woodcraft items are displayed elegantly on minimalist white pedestals. The lighting is soft and focused, highlighting the textures and craftsmanship of the traditional products in a contemporary commercial context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo02SJ8p83EZs9Ghgd3aduPcjNb-2TPCmXwDlwpn9lyJo-dN7EVZXzr-uWhjK0bPlGK0b7LEBT7QRPTgO3-1gl0rUK0_9w-t7cL9AJO1LhZSMBfjJJ80WPP2p8uzlW2Ouo2z381sws8SRHTRMOufb7_d3da5AkmFAw0dBia0U0JiGQChsG3176XIPL8Be0UWIwj7fDGZ41TZu6Xn03ed2dCs_YhasbOlEMGGPgTPHzkoO7h1QmNwJswUvvvLR-DRsT2CWKlYxq6w"/>
+</div>
+<div class="p-md flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Pesta Kriya Nusantara</h3>
+<div class="flex justify-between items-center mb-4">
+<span class="text-secondary font-bold">Rp 1.200.000</span>
+<span class="bg-surface-container-high px-2 py-1 rounded text-[10px] font-bold text-on-surface-variant">4 SLOT TERSISA</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">Pameran produk kerajinan tangan terbaik dari seluruh pelosok Indonesia dengan jangkauan pengunjung mancanegara.</p>
+</div>
+<button class="w-full border-2 border-primary text-primary py-2 rounded-xl font-label-md text-label-md hover:bg-primary/5 transition-colors" onclick="openForm('Pesta Kriya Nusantara')">Daftar Sekarang</button>
+</div>
+</div>
+<!-- Small Event Item -->
+<div class="flex flex-col rounded-xl border border-outline-variant/50 bg-surface-container-lowest shadow-sm overflow-hidden">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A close-up view of a high-tech MSME tech expo with digital screens and interactive kiosks displaying Indonesian innovative apps and digital services. The setting is a brightly lit, modern hall with a sleek, minimalist design, predominantly in teal and soft cream colors, evoking a sense of future-forward Indonesian entrepreneurship and growth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB85vMhIEWKkigoeXi5OZAhrl61TQu_N2KL3qB-HQhN5UiJc4C626S_bp8-OJ-WhhybfyFWcCNsBLKcZLtPZ7d7Pc_9x9xlrepmoyJIs5blRlHzP8bqPhhd66Tw3L-7F4uJnEDPVNXNspjJanP_ZuplAylQ_on_RlcPAuQA5yfOsok6EMmlNiaxmyMLWZBoxzw_L5YpCsuJdtucM2mnaJvVMPwd1FPKKBhGoT4Zn0h-yw_NMz41IuzeCQUNAOqQH3CPP6TQKUYgVA"/>
+</div>
+<div class="p-md flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Digital UMKM Expo</h3>
+<div class="flex justify-between items-center mb-4">
+<span class="text-secondary font-bold">Rp 750.000</span>
+<span class="bg-surface-container-high px-2 py-1 rounded text-[10px] font-bold text-on-surface-variant">OPEN REGISTRATION</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">Pameran startup dan UMKM digital. Fokus pada efisiensi bisnis dan teknologi tepat guna untuk pasar lokal.</p>
+</div>
+<button class="w-full border-2 border-primary text-primary py-2 rounded-xl font-label-md text-label-md hover:bg-primary/5 transition-colors" onclick="openForm('Digital UMKM Expo')">Daftar Sekarang</button>
+</div>
+</div>
+<!-- Event Table Section -->
+<div class="xl:col-span-2 overflow-hidden rounded-xl border border-outline-variant/50 bg-surface-container-lowest">
+<div class="p-md bg-surface-container border-b border-outline-variant/50 flex justify-between items-center">
+<h3 class="font-label-md text-label-md text-on-surface">Event Terdekat Lainnya</h3>
+<a class="text-primary font-label-sm text-label-sm hover:underline" href="#">Lihat Semua</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-container-low text-on-surface-variant">
+<tr>
+<th class="px-md py-3 font-label-md text-label-md">Nama Event</th>
+<th class="px-md py-3 font-label-md text-label-md">Tanggal</th>
+<th class="px-md py-3 font-label-md text-label-md">Lokasi</th>
+<th class="px-md py-3 font-label-md text-label-md">Biaya</th>
+<th class="px-md py-3 font-label-md text-label-md">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-4">Bazar Ramadhan Depok</td>
+<td class="px-md py-4">12-25 Mar 2024</td>
+<td class="px-md py-4">Margo City</td>
+<td class="px-md py-4 font-bold text-secondary">Rp 1.500k</td>
+<td class="px-md py-4"><button class="text-primary hover:underline font-bold" onclick="openForm('Bazar Ramadhan Depok')">Detail</button></td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-4">Festival Kopi Bandung</td>
+<td class="px-md py-4">02-04 Apr 2024</td>
+<td class="px-md py-4">Gedung Sate</td>
+<td class="px-md py-4 font-bold text-secondary">Rp 900k</td>
+<td class="px-md py-4"><button class="text-primary hover:underline font-bold" onclick="openForm('Festival Kopi Bandung')">Detail</button></td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-4">Jogja Creative Week</td>
+<td class="px-md py-4">15-20 Mei 2024</td>
+<td class="px-md py-4">JEC, Yogyakarta</td>
+<td class="px-md py-4 font-bold text-secondary">Rp 2.100k</td>
+<td class="px-md py-4"><button class="text-primary hover:underline font-bold" onclick="openForm('Jogja Creative Week')">Detail</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- MSME Tips / Support -->
+<div class="bg-primary-container text-on-primary-container p-lg rounded-xl flex flex-col justify-between shadow-md">
+<div>
+<span class="material-symbols-outlined text-[48px] mb-4" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<h3 class="font-headline-md text-headline-md mb-2">Tips Jualan Laris!</h3>
+<p class="font-body-sm text-body-sm opacity-90 leading-relaxed">Pastikan katalog produk Anda selalu up-to-date. Tenant dengan dokumentasi foto yang baik memiliki peluang 2x lebih besar untuk disetujui Admin Event.</p>
+</div>
+<a class="mt-xl inline-flex items-center gap-2 font-label-md text-label-md group" href="#">
+                        Pelajari Selengkapnya 
+                        <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Registration Form Modal (Hidden by default) -->
+<div class="fixed inset-0 z-[100] hidden" id="registrationModal">
+<div class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm" onclick="closeForm()"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-surface p-xl rounded-2xl shadow-2xl border border-outline-variant max-h-[921px] overflow-y-auto custom-scrollbar">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="font-headline-md text-headline-md text-primary" id="modalTitle">Daftar Event</h2>
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-high rounded-full" data-icon="close" onclick="closeForm()">close</button>
+</div>
+<form class="space-y-lg" id="eventForm">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-2">Nama Toko / UMKM</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none font-body-md text-body-md" placeholder="Masukkan nama usaha Anda" required="" type="text"/>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-2">Kategori Produk</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none font-body-md text-body-md" required="">
+<option value="">Pilih Kategori</option>
+<option>Kuliner</option>
+<option>Fashion</option>
+<option>Kriya / Kerajinan</option>
+<option>Digital / Services</option>
+</select>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-2">Unggah Katalog Produk (PDF/JPG)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-xl text-center hover:border-primary transition-colors cursor-pointer bg-surface-container-low">
+<span class="material-symbols-outlined text-[32px] text-on-surface-variant mb-2" data-icon="cloud_upload">cloud_upload</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Klik atau seret file untuk mengunggah</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<input class="rounded text-primary focus:ring-primary h-4 w-4" id="terms" required="" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface-variant" for="terms">Saya menyetujui <a class="text-primary underline" href="#">Syarat & Ketentuan</a> event ini.</label>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-headline-md text-headline-md hover:bg-on-primary-fixed-variant transition-all transform active:scale-95" type="submit">Kirim Pendaftaran</button>
+</form>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-dim border-t border-outline-variant">
+<div class="w-full py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary block mb-md">UMKM Asli</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Platform gotong royong terpercaya untuk memajukan pengusaha lokal melalui digitalisasi dan akses pasar yang lebih luas.</p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold mb-md uppercase">Pusat Bantuan</h4>
+<ul class="space-y-2">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Tentang Kami</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Cara Berjualan</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Pusat Bantuan</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold mb-md uppercase">Legal</h4>
+<ul class="space-y-2">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Syarat & Ketentuan</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Kebijakan Privasi</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold mb-md uppercase">Mitra</h4>
+<a class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md inline-block hover:bg-on-primary-fixed-variant transition-colors" href="#">Jadi Seller UMKM</a>
+</div>
+</div>
+<div class="w-full py-md px-margin-desktop border-t border-outline-variant/30 text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 UMKM Asli. Gotong Royong Membangun Negeri.</p>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container-lowest dark:bg-inverse-surface shadow-[0_-4px_20px_rgba(0,128,128,0.08)] flex justify-around items-center px-4 py-2 pb-safe rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Beranda</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label-sm text-label-sm">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="font-label-sm text-label-sm">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profil</span>
+</a>
+</nav>
+<script>
+        function openForm(eventName) {
+            document.getElementById('modalTitle').innerText = 'Daftar ke: ' + eventName;
+            document.getElementById('registrationModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeForm() {
+            document.getElementById('registrationModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('eventForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pendaftaran Anda berhasil dikirim ke Admin Event! Kami akan menghubungi Anda melalui email dalam 2-3 hari kerja.');
+            closeForm();
+        });
+    </script>
+</body></html>

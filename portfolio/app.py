@@ -1,6 +1,8 @@
+from ast import main
 import streamlit as st
 from PIL import Image
 import os
+import base64
 
 # ─────────────────────────────────────────────
 #  PAGE CONFIG
@@ -17,22 +19,23 @@ st.set_page_config(
 NAME        = "Josep"
 TAGLINE     = "Undergraduate · Builder · Curious mind"
 BIO         = (
-    "Hi! I'm Josep, an Information Systems student at Binus University. "
-    "I enjoy building things at the intersection of data, finance, and technology — "
-    "from machine learning stock predictors to marketplace platforms and music recommenders."
+    "Hi! I'm Josep, an Computer Science student at Binus University. "
+    "I enjoy building things at the intersection of data, finance, and technology "
+    "from machine learning to Web development using AI"
 )
 LOCATION    = "Semarang, Indonesia"
-EMAIL       = ""                            # fill in if you want
+EMAIL       = "josephchristian006@gmail.com"                           
 GITHUB_URL  = "https://github.com/Joseph-chris12"
 INSTAGRAM   = "https://www.instagram.com/joseph.ck12"
-AVATAR_URL  = "https://avatars.githubusercontent.com/u/151103519?v=4"
+AVATAR_URL  = r"foto/josep.jpg"
 
 # ── SKILLS ──────────────────────────────────
 SKILLS = [
     "Python", "JavaScript", "HTML/CSS", "PHP",
-    "Streamlit", "Flask", "Pandas", "Scikit-learn",
-    "PLS-SEM", "Machine Learning", "Data Analysis",
+    "Streamlit", "Flask", "Pandas",
+    "Machine Learning", "Data Analysis",
     "SQL", "Power BI / Excel", "Git",
+    "Artificial Intelligence", "Antigravity","Claude","Google Gemini"
 ]
 
 # ── PROJECTS ────────────────────────────────
@@ -45,7 +48,7 @@ PROJECTS = [
             "Cosine similarity engine with mood-based presets."
         ),
         "tech": ["Python", "JavaScript", "Machine Learning", "Spotify API"],
-        "url": "https://github.com/Joseph-chris12/SoundCore",
+        "url": "https://soundcore-9l8ncxexjqvz3mba9twwqy.streamlit.app/",
     },
     {
         "title": "projectStockPrice",
@@ -55,7 +58,7 @@ PROJECTS = [
             "Originally Flask-based, converted to a static GitHub Pages site."
         ),
         "tech": ["Python", "Flask", "JavaScript", "IDX Data"],
-        "url": "https://github.com/Joseph-chris12/projectStockPrice",
+        "url": "https://projectstockprice-tzodvectfkib7ulgcsynsl.streamlit.app/",
     },
     {
         "title": "Thrivea",
@@ -75,7 +78,7 @@ PROJECTS = [
             "Features an Event Calendar and digital proposal workflow."
         ),
         "tech": ["Web Dev", "UX Design", "PRD"],
-        "url": "#",   # update when live
+        "url": "#",   
     },
     {
         "title": "Valentine's Web",
@@ -105,15 +108,39 @@ PROJECTS = [
 EVENTS = [
     {
         "title": "Google Cloud Study Jam",
-        "date": "2024",
+        "date": "2025",
         "desc": "Participated in an application modernisation workshop on Google Cloud Platform.",
-        "image": None,   # e.g. "images/studyjam.jpg"
+        "image": r"foto/p2.jpeg",
     },
     {
         "title": "Behavioral Finance Research",
-        "date": "2024",
+        "date": "2026",
         "desc": "Presented research on FOMO and herding behavior among Gen Z investors using PLS-SEM & ML.",
-        "image": None,
+        "image": r"foto/stockPredict.jpeg",
+    }, {
+        "title": "First Year Program (FYPL) B29 | Binus University",
+        "date": "2025",
+        "desc": "Selected as the sole Computer Science First Year Program Leader, orchestrating large-scale student onboarding with BINUS SADC. Directly managed 100 freshmen leaders to drive campus integration, demonstrating exceptional high-scale leadership and project execution.",
+        "image": r"foto/p1.jpeg",
+    }, {
+        "title": "Google Student Ambassador 2026 | Google Indonesia",
+        "date": "2026",
+        "desc": "A tech-savvy advocate and current Google Student Ambassador experienced in driving digital literacy and tech adoption through campus-wide workshops. Skilled in breaking down complex technologies into user-centric solutions, eager to combine technical logic with product innovation.",
+        "image": r"foto/googleA.jpeg",
+    }, {
+        "title": "Project Manager | Binus Festival Games Division @Binus University",
+        "date": "2026",
+        "desc": "Served as PIC of the Games Division for Binus Festival, spearheading the entire project lifecycle from talent recruitment to operational execution. Orchestrated team workflows and event mechanics to deliver high-engagement experiences, showcasing robust product management and agile leadership.",
+        "image": r"foto/bifes.jpeg",
+    }, {
+        "title": "DMax: Smart Face-Recognition Access Control System",
+        "date": "2026",
+        "desc": (
+            "Full-Stack IoT & Product Lead. "
+            "Successfully secured project funding by presenting a comprehensive market viability framework, user persona mapping, and competitor benchmarking. "
+            "Engineered a full-stack IoT security system integrating computer vision (Face Recognition), dynamic QR one-time code authentication, and automated traceability logs via a web-based control panel."
+        ),
+        "image": r"foto/dmax.jpeg",
     },
     # ➕ Add more events below ⬇️
 ]
@@ -256,7 +283,25 @@ st.markdown("""
 col_avatar, col_text = st.columns([1, 3], gap="large")
 
 with col_avatar:
-    st.markdown(f'<img src="{AVATAR_URL}" style="width:160px;height:160px;border-radius:50%;border:3px solid #6EE7B7;display:block;margin:auto;" />', unsafe_allow_html=True)
+    avatar_src = AVATAR_URL
+    if not avatar_src.startswith("http"):
+        # Resolve local path
+        script_dir = os.path.dirname(__file__)
+        abs_path = os.path.join(script_dir, avatar_src)
+        target_path = abs_path if os.path.exists(abs_path) else avatar_src
+        
+        if os.path.exists(target_path):
+            with open(target_path, "rb") as f:
+                encoded = base64.b64encode(f.read()).decode()
+                # Guess mime type based on extension
+                mime_type = "image/png" if target_path.lower().endswith(".png") else "image/jpeg"
+                avatar_src = f"data:{mime_type};base64,{encoded}"
+
+    st.markdown(f'''
+        <div style="width:160px;height:160px;border-radius:50%;border:3px solid #6EE7B7;margin:auto;overflow:hidden;">
+            <img src="{avatar_src}" style="width:100%;height:100%;object-fit:cover;transform:scale(1.25);transform-origin:center;" />
+        </div>
+    ''', unsafe_allow_html=True)
 
 with col_text:
     st.markdown(f'<div class="hero-name">{NAME}</div>', unsafe_allow_html=True)
@@ -312,22 +357,6 @@ st.markdown('<div class="my-divider"></div>', unsafe_allow_html=True)
 st.markdown('<div class="section-label">Moments & Milestones</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-title">Events</div>', unsafe_allow_html=True)
 
-# ── Upload section (so you can add photos later) ──
-with st.expander("➕ Add a new event photo"):
-    ev_title = st.text_input("Event title")
-    ev_date  = st.text_input("Date (e.g. June 2025)")
-    ev_desc  = st.text_area("Short description")
-    ev_img   = st.file_uploader("Upload a photo (optional)", type=["jpg", "jpeg", "png"])
-
-    if st.button("Add to session") and ev_title:
-        st.session_state.setdefault("extra_events", []).append({
-            "title": ev_title,
-            "date": ev_date,
-            "desc": ev_desc,
-            "uploaded_image": ev_img,
-        })
-        st.success(f"Added {ev_title} — scroll down to see it!")
-
 # ── Render hardcoded events ──
 all_events = EVENTS + st.session_state.get("extra_events", [])
 
@@ -342,8 +371,14 @@ else:
             uploaded = ev.get("uploaded_image")
             if uploaded:
                 st.image(uploaded, use_container_width=True)
-            elif img_path and os.path.exists(img_path):
-                st.image(img_path, use_container_width=True)
+            elif img_path:
+                # Try relative to the script's directory first
+                script_dir = os.path.dirname(__file__)
+                abs_path = os.path.join(script_dir, img_path)
+                if os.path.exists(abs_path):
+                    st.image(abs_path, use_container_width=True)
+                elif os.path.exists(img_path):
+                    st.image(img_path, use_container_width=True)
             # Card text
             st.markdown(f"""
             <div class="event-card">

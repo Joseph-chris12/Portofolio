@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UMKM Asli | Nusantara Trade System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+        }
+        h1, h2, h3, h4, .font-display {
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(26, 20, 107, 0.05);
+        }
+        .nusantara-pattern {
+            background-image: radial-gradient(#1a146b 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.03;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#f8f9ff",
+                      "surface": "#f8f9ff",
+                      "primary": "#1a146b",
+                      "primary-container": "#312e81",
+                      "on-primary": "#ffffff",
+                      "on-primary-container": "#9c9af4",
+                      "secondary": "#006d36", /* Mint/Green Secondary */
+                      "secondary-container": "#6dfe9c", /* Mint Accent */
+                      "on-secondary": "#ffffff",
+                      "on-secondary-container": "#007439",
+                      "on-surface": "#0b1c30",
+                      "on-surface-variant": "#474651",
+                      "outline": "#777682",
+                      "outline-variant": "#c8c5d3",
+                      "error": "#ba1a1a",
+                      "surface-container": "#e5eeff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "xs": "4px",
+                      "base": "4px",
+                      "xl": "40px",
+                      "margin-desktop": "32px",
+                      "md": "16px",
+                      "gutter": "24px",
+                      "lg": "24px",
+                      "sm": "8px",
+                      "container-max": "1200px"
+              },
+              "fontFamily": {
+                      "display": ["Hanken Grotesk"],
+                      "body": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white border-b border-outline-variant h-16">
+<nav class="max-w-container-max mx-auto px-margin-desktop h-full flex justify-between items-center">
+<div class="flex items-center gap-xl">
+<span class="font-display text-2xl font-extrabold text-primary">UMKM Trade</span>
+<div class="hidden md:flex items-center gap-lg">
+<a class="text-primary font-bold border-b-2 border-secondary pb-1 text-sm" href="#">Marketplace</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors text-sm" href="#">Events</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors text-sm" href="#">Kategori</a>
+</div>
+</div>
+<div class="flex-1 max-w-md mx-xl hidden md:block">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2 pl-10 pr-4 focus:ring-2 focus:ring-secondary focus:border-transparent text-sm" placeholder="Cari produk UMKM..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-all">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkU2h689hHLdF4p5ofmIR8ODyvbvStX217Svh7ifTwCUSOUjvnZH_3L4I17NETmpmQ2DLApJ0nNixaroOipU-5RHMmcGDWPvdN86nhw4Z7ahpEN16i6P2tLT6OI7KyNJVjM52s9vlk73-8OrtNwjR3vwZpWPaJvJBKOo5-7dEQHDUytJYJn1XIQ-5GBP82V2r9fx8_XiCjECfdOo7N-iSoNqvFDLSnQO3KsunefA8xNDnf9mfDrp7xGpVQtApqXO-0Z_1XigHkPw"/>
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-16 pb-24 md:pb-0">
+<!-- Hero Section -->
+<section class="relative min-h-[700px] flex items-center overflow-hidden bg-white">
+<div class="absolute inset-0 nusantara-pattern"></div>
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-xl relative z-10">
+<div class="flex flex-col justify-center space-y-lg">
+<div class="inline-flex items-center gap-xs px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full border border-secondary/10 w-fit">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-xs font-semibold">Premium Quality Local Products</span>
+</div>
+<h1 class="text-5xl font-extrabold text-on-surface leading-tight">
+                        Empowering<br/><span class="text-secondary">Nusantara Commerce</span> with Modern Trade
+                    </h1>
+<p class="text-lg text-on-surface-variant max-w-lg leading-relaxed">
+                        Direct access to Indonesia's finest curated MSMEs. Bridging local craftsmanship with global trade standards through the Nusantara Trade System.
+                    </p>
+<div class="flex flex-wrap gap-md">
+<button class="px-xl py-md bg-secondary text-on-secondary rounded-xl font-bold shadow-lg shadow-secondary/20 hover:brightness-110 transition-all">
+                            Explore Marketplace
+                        </button>
+<button class="px-xl py-md border-2 border-primary text-primary rounded-xl font-bold hover:bg-primary/5 transition-colors">
+                            About System
+                        </button>
+</div>
+</div>
+<div class="relative hidden md:block">
+<div class="relative z-10 aspect-square rounded-[40px] overflow-hidden shadow-2xl border-8 border-white">
+<img alt="Lifestyle photograph of artisanal Indonesian craft" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgzBltPN3D1jYJ-wR82vB_q_scPqKAliAt8PTZ1gk6V9gzRsfRfqDA3ex7jaHyvhAUKDYlb2OUeiLtFg4dT3HZ9K6arxKaZHlQUiydrHTy6xYXnTgKM36HnYZtJol7V2Qw6aS9Ja4wpOcqizULp4liGO7BiY27LGFPa7gz0iARBmqhB-9wxK1pmR-m2mYNTfPKpTevktC3_sXEPZZJksQCs1sbqH4v4w0AW7Ys_YYOmDdfwfYNBv_5CQy15iSA-3sYsYml90vmDQ"/>
+</div>
+<!-- Floating Badge -->
+<div class="absolute -bottom-6 -left-6 z-20 glass-card p-6 rounded-2xl shadow-xl flex items-center gap-md">
+<div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">corporate_fare</span>
+</div>
+<div>
+<p class="text-2xl font-bold text-secondary m-0 leading-none">15k+</p>
+<p class="text-xs font-semibold text-on-surface-variant">Verified Partners</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Kategori Populer -->
+<section class="py-xl max-w-container-max mx-auto px-margin-desktop">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h2 class="text-3xl font-bold text-on-surface">Kategori Unggulan</h2>
+<p class="text-base text-on-surface-variant">Explore the diversity of Indonesian industrial sectors</p>
+</div>
+<a class="text-secondary font-bold flex items-center gap-xs group" href="#">
+                    Lihat Semua <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-gutter h-auto md:h-[500px]">
+<!-- Food -->
+<div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-3xl cursor-pointer">
+<img alt="Indonesian Food" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYJb_yoB0nt1c0u6hmSL1Y2miG9yP2DTwxVdFsZ552Wh_jk4diIY270KYYm1Gab8S5uYJk2NNQdrxA1rHw3hQXDJAIeDUwKena88ozV5nXb3ocYKFCeDmsYRHzTiTTuUwieSanv8P7iS-lu-Q5Uv2lfzq_BvEuqZSV4XXu2xE0Xi3pAxYFDg5qFUkXbToNcGbZ60MsC_PCGz0HG1ib93en2l2KEslIVMBz60kECMBy4IgyyzBvwcGPHWFgEQq8xp7YSXoQY25S2g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent flex flex-col justify-end p-xl">
+<h3 class="text-2xl font-bold text-white">Makanan &amp; Minuman</h3>
+<p class="text-white/80 text-sm">Standardized culinary excellence for export.</p>
+</div>
+<div class="absolute top-4 right-4 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+    Explore
+</div>
+</div>
+<!-- Fashion -->
+<div class="md:col-span-2 md:row-span-1 relative group overflow-hidden rounded-3xl cursor-pointer">
+<img alt="Indonesian Fashion" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd7ENcPIF6MndMg68iGX-ctNwRPCxv9UieaarNyvsGL8gR6UPmhx_d8a3IcdKygEZjYoLOrKJCXPLA0hujyxWDCtJo-oSQggRkSLwuGGGDVJetpN2DeUItHVDB8tLL7xtWO9hANuB9ws0u2v_tScwP6Swqn-hpk73kI6PB7MkkBj25xps_wTWsnsNsWw7c1OmbPHgP7yp-wBSKYemJ3DsuEiFIuy-2H4XyZCdCwwUXbcuF5R0hpOkZTDk0PEulRRZ6wT8GLqlP1w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent flex flex-col justify-end p-lg">
+<h3 class="text-2xl font-bold text-white">Fashion &amp; Tekstil</h3>
+<p class="text-white/80 text-sm">Modern Nusantara aesthetic with premium quality fabrics.</p>
+</div>
+</div>
+<!-- Kerajinan -->
+<div class="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-3xl cursor-pointer">
+<img alt="Indonesian Handicraft" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXclDIAyFFyxDKD3tO-iPYYRZirx-nygr4vZ-QzgNUOMJy0iyPB0pmXQRY7GOta3NxFfBYzEEYUQAgCuAk4FqnI0UAr5rLtehtMPo4feje2zuZ6yckzxWmUyOlNDYjg8aizHKI7q_5ksgevAFOEx4mXsWxbaGgM_Nrdv_oYiZKxyIq-jqeneVcNsE-1F44y5VkbbKqxZICN01MEQIaTShURICyPJFXMr_12Jp3YJviRBHcB9t_Wvl6f6VAnA8aCXvCTzPjT634Zw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent flex flex-col justify-end p-md">
+<h3 class="text-sm font-bold text-white">Kerajinan</h3>
+</div>
+</div>
+<!-- Aksesoris -->
+<div class="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-3xl cursor-pointer">
+<img alt="Indonesian Accessories" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA319IbeE8LdAIaLIEsp434Ri0aH_B34_fa7BSP2H7XsDrWvdS85rrlAM77iD3IIQMMD2SO5KLjGsTVykkBgL7bGyCexKUvJRoAF1Hn8G70oouFC3qikkoHOqGCFLkD_i2Auo_jOVMGwsOAbXP1A-n1lWZgodSemMC1e-yqHSvpv8-hq8juJKPkQ4Uy0cWHMMJmLOfd_vAZkA9Fxt7sKImcLalezDyxS2nOY55Dwg0BDeUo_vG6oc8Kh6ZiAR2VMhgQ1exluNMX7A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent flex flex-col justify-end p-md">
+<h3 class="text-sm font-bold text-white">Aksesoris</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- UMKM Pilihan -->
+<section class="py-xl bg-surface-container">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="mb-lg text-center">
+<h2 class="text-3xl font-bold text-on-surface">Top Verified Sellers</h2>
+<p class="text-base text-on-surface-variant">Exceptional partners within the Nusantara Trade System</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-xl">
+<!-- Seller Card 1 -->
+<div class="bg-white rounded-3xl p-lg border border-outline-variant shadow-sm hover:shadow-xl hover:border-secondary/20 transition-all group">
+<div class="relative h-48 rounded-2xl overflow-hidden mb-md">
+<img alt="Artisan" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZu1ibV-czy53iEmArycMpymua_DCWbwNgomilKHGQ8srhbnJwOKvfYff3pKpiPkmNiYDBP5xbokDvvr23BJ65iTqOOHPEIpPztnLmjaQTC3p3QOinvu_xOOOxqIsl24y9qoYMDBShQ5yzFNfnz1G07zLzlQyUy3BaPMHejfON8QRjVdiyQOac9yD3iq7gAPHF6IVKQiozpQw-7dXiukMFc1bp3Ewuu9_Qk-4tAFtIcJmoXhGXmqpbcmZZCO8mI_w443CAfnN4hA"/>
+<div class="absolute top-3 left-3 px-2 py-1 bg-secondary text-white rounded-lg text-xs font-bold">Verified Partner</div>
+</div>
+<div class="flex justify-between items-start mb-xs">
+<h4 class="text-xl font-bold text-on-surface">Keramik Bumi</h4>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">4.9</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant mb-md">Contemporary clay art from Kasongan perajin, Yogyakarta.</p>
+<div class="flex items-center gap-xs mb-lg">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded-md text-xs font-semibold">Industrial</span>
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded-md text-xs font-semibold">Premium</span>
+</div>
+<button class="w-full py-2 bg-secondary-container/30 text-secondary font-bold rounded-xl hover:bg-secondary hover:text-white transition-all">Visit Showroom</button>
+</div>
+<!-- Seller Card 2 -->
+<div class="bg-white rounded-3xl p-lg border border-outline-variant shadow-sm hover:shadow-xl hover:border-secondary/20 transition-all group">
+<div class="relative h-48 rounded-2xl overflow-hidden mb-md">
+<img alt="Coffee Packaging" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk11b1LbrsNVegUeXdliIPKPVf5qCNxPFYgEmmb6Xoq4VeAjrQXotqdydL-Uu2NS0jIo3Nj6fESqz_YOdUYNdfcqYIt2X2jpIeY1OkgplTJEobI2RDFn92_DEPf6WIUNAKF-_YG7fxQyqgAgNRhjQO_6rA9fvQ_czLgqRKPddYprJMjqrNT9is6zkFzi6CtUD9Of0nFxkqjEJ_l0-eUijSOwi_umDdDwMXkkAT5x8UHHVHypaLb8B_wCC-9Ru1Z42S9ADjHXgiEw"/>
+<div class="absolute top-3 left-3 px-2 py-1 bg-secondary text-white rounded-lg text-xs font-bold">Verified Partner</div>
+</div>
+<div class="flex justify-between items-start mb-xs">
+<h4 class="text-xl font-bold text-on-surface">Kopi Ranah</h4>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">4.8</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant mb-md">Selected coffee beans from Gayo highlands with export standards.</p>
+<div class="flex items-center gap-xs mb-lg">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded-md text-xs font-semibold">Agro-Trade</span>
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded-md text-xs font-semibold">Organic</span>
+</div>
+<button class="w-full py-2 bg-secondary-container/30 text-secondary font-bold rounded-xl hover:bg-secondary hover:text-white transition-all">Visit Showroom</button>
+</div>
+<!-- Seller Card 3 -->
+<div class="bg-white rounded-3xl p-lg border border-outline-variant shadow-sm hover:shadow-xl hover:border-secondary/20 transition-all group">
+<div class="relative h-48 rounded-2xl overflow-hidden mb-md">
+<img alt="Batik Boutique" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsTSCuXFj_30HamYsrG7Quncs3FvuO3iJIdqtjGU7AZDzzR7NW2Tj0M9MYvN9Kq9HNCa7qZ-5Lo_zAmBUnQDg0j3e6uBGoPINs_cswL_o3RRoRXQZ_vvFNoR8Z8OZnzLG2I8gOopxfY7Pe-bwZs8FK-NAhwG7fwPnmckuPxWGdRqtIbv5D24Na-Rm8PQkLk8Ac-JA6p8-W1Oq7DdUHQKg8cRyoTCiw13X5V-TQCKaxQU3CZHE_5Qj32hTkLlXv5yRdaSnt1tWjRA"/>
+<div class="absolute top-3 left-3 px-2 py-1 bg-secondary text-white rounded-lg text-xs font-bold">Verified Partner</div>
+</div>
+<div class="flex justify-between items-start mb-xs">
+<h4 class="text-xl font-bold text-on-surface">Gaya Wastra</h4>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">5.0</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant mb-md">Chic &amp; modern sustainable fashion innovation based on NTT weaving.</p>
+<div class="flex items-center gap-xs mb-lg">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded-md text-xs font-semibold">Fashion</span>
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded-md text-xs font-semibold">Export</span>
+</div>
+<button class="w-full py-2 bg-secondary-container/30 text-secondary font-bold rounded-xl hover:bg-secondary hover:text-white transition-all">Visit Showroom</button>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-xl">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="bg-primary rounded-[48px] overflow-hidden relative p-xl md:p-32 text-center text-white">
+<div class="absolute inset-0 nusantara-pattern opacity-10"></div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="text-4xl font-extrabold mb-md">Ready to Scale Your Trade?</h2>
+<p class="text-lg mb-xl opacity-90 leading-relaxed">Join the Nusantara Trade System network. We provide the infrastructure and expertise to take your local production to the international stage.</p>
+<div class="flex flex-col md:flex-row justify-center gap-md">
+<button class="px-xl py-lg bg-secondary text-on-secondary rounded-2xl text-xl font-bold hover:brightness-110 transition-transform">Become a Trade Partner</button>
+<button class="px-xl py-lg bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl text-xl font-bold hover:bg-white/20 transition-all">Support Center</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white border-t border-outline-variant">
+<div class="max-w-container-max mx-auto py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-2">
+<span class="text-2xl font-extrabold text-primary block mb-md">UMKM Trade System</span>
+<p class="text-sm text-on-surface-variant max-w-xs mb-lg">
+                    A professional trade infrastructure connecting high-quality Nusantara producers with global and domestic value chains.
+                </p>
+<div class="flex gap-md">
+<a class="w-10 h-10 rounded-full bg-white border border-outline-variant flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white border border-outline-variant flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="text-sm font-bold text-on-surface mb-lg">Quick Access</h5>
+<ul class="space-y-sm">
+<li><a class="text-sm text-on-surface-variant hover:text-secondary transition-all" href="#">About Nusantara Trade</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-secondary transition-all" href="#">Help Desk</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-secondary transition-all" href="#">Trade Agreements</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-secondary transition-all" href="#">Data Protection</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-sm font-bold text-on-surface mb-lg">Partnership</h5>
+<ul class="space-y-sm">
+<li><a class="text-sm text-on-surface-variant hover:text-secondary transition-all" href="#">Join System</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-secondary transition-all" href="#">Logistics &amp; Supply Chain</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-secondary transition-all" href="#">Global Marketing</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop py-lg border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="text-xs text-on-surface-variant opacity-70">© 2024 Nusantara Trade System. Empowering Local Commerce.</p>
+<div class="flex items-center gap-xl grayscale opacity-50">
+<span class="material-symbols-outlined">payments</span>
+<span class="material-symbols-outlined">account_balance</span>
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-white border-t border-outline-variant shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-secondary text-on-secondary rounded-full px-4 py-1 scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="text-[10px] font-semibold">Trade</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="text-[10px] font-semibold">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-semibold">Account</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('opacity-80', 'transition-all', 'duration-200');
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('opacity-80');
+            });
+        });
+
+        // Simple scroll reveal
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-sm');
+            } else {
+                header.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body></html>
